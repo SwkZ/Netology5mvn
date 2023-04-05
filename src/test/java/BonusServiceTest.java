@@ -34,6 +34,7 @@ public class BonusServiceTest {
         // производим проверку (сравниваем ожидаемый и фактический):
         Assertions.assertEquals(expected, actual);
     }
+
     @org.junit.jupiter.api.Test
     void shouldCalculateForUnregistered() {
         BonusService service = new BonusService();
@@ -46,4 +47,18 @@ public class BonusServiceTest {
 
         Assertions.assertEquals(expected, actual);
     }
+
+    @org.junit.jupiter.api.Test
+    void calculatePercentUnderLimit() {
+        BonusServicePercent service = new BonusServicePercent();
+
+        long amount = 1_000;
+
+        long expected = 30;
+
+        long actual = service.calculate(amount);
+
+        Assertions.assertEquals(expected, actual, limit);
+    }
+
 }
