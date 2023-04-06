@@ -52,13 +52,13 @@ public class BonusServiceTest {
     void calculatePercentUnderLimit() {
         BonusServicePercent service = new BonusServicePercent();
 
-        long amount = 1_000;
+        long amount = 2_000_000;
+        boolean registered = false;
+        long expected = 500;
 
-        long expected = 30;
+        long actual = service.calculate(amount, registered);
 
-        long actual = service.calculate(amount);
-
-        Assertions.assertEquals(expected, actual, limit);
+        Assertions.assertEquals(expected, actual);
     }
 
 }
